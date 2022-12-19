@@ -8,7 +8,7 @@ import ru.dautov.springcourse.models.Person;
 
 
 import java.util.List;
-import java.util.Optional;
+
 
 @Component
 public class PersonDAO {
@@ -19,19 +19,10 @@ public class PersonDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    //    вывод всех людей на экран
     public List<Person> index() {
         return jdbcTemplate.query("SELECT * FROM Person", new BeanPropertyRowMapper<>(Person.class));
-//        Т.к. наименование полей совпадает с БД то можо использовать BeanPropertyRowMapper, если нет,
-//        то необходимо реализовать свой PersonMapper
     }
 
-    public Optional<Person> show(String name) {
-        return jdbcTemplate.query("SELECT * FROM Person WHERE email=?", new Object[]{name},
-                new BeanPropertyRowMapper<>(Person.class)).stream().findAny();
-    }
-
-    //    показывает одного человека по id
     public Person show(int id) {
         return jdbcTemplate.query("SELECT * FROM Person WHERE id=?", new Object[]{id}, new BeanPropertyRowMapper<>(Person.class))
                 .stream().findAny().orElse(null);

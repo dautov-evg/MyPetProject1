@@ -26,23 +26,17 @@ public class PeopleController {
 
     @GetMapping()
     public String index(Model model) {
-        // Получим всех людей из DAO и передадим на отображение в представление
-
         model.addAttribute("people", personDAO.index());
         return "people/index";
     }
 
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model) {
-        // Получим одного человека по его id из DAO и передадим на отображение в представление
-
         model.addAttribute("person", personDAO.show(id));
         return "people/show";
     }
 
     @GetMapping("/new")
-//    public String newPerson(Model model) {
-//        model.addAttribute("person", new Person());
     public String newPerson(@ModelAttribute("person") Person person) {
         return "people/new";
     }
