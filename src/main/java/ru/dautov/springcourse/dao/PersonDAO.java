@@ -26,8 +26,8 @@ public class PersonDAO {
 //        то необходимо реализовать свой PersonMapper
     }
 
-    public Optional<Person> show(String email) {
-        return jdbcTemplate.query("SELECT * FROM Person WHERE email=?", new Object[]{email},
+    public Optional<Person> show(String name) {
+        return jdbcTemplate.query("SELECT * FROM Person WHERE email=?", new Object[]{name},
                 new BeanPropertyRowMapper<>(Person.class)).stream().findAny();
     }
 
@@ -38,12 +38,12 @@ public class PersonDAO {
     }
 
     public void save(Person person) {
-        jdbcTemplate.update("INSERT INTO Person(name, age, email) VALUES(?,?,?)", person.getName(), person.getAge(), person.getEmail());
+        jdbcTemplate.update("INSERT INTO Person(name, age) VALUES(?,?)", person.getName(), person.getAge());
     }
 
     public void update(int id, Person updatedPerson) {
-        jdbcTemplate.update("UPDATE Person SET name=?, age=?, email=? WHERE id=?", updatedPerson.getName(),
-                updatedPerson.getAge(), updatedPerson.getEmail(), id);
+        jdbcTemplate.update("UPDATE Person SET name=?, age=? WHERE id=?", updatedPerson.getName(),
+                updatedPerson.getAge(), id);
     }
 
     public void delete(int id) {
