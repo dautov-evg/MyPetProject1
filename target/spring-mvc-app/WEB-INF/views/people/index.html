@@ -13,7 +13,10 @@
 
 <br/>
 <hr/>
-<a href="/people/new">Создать нового человека</a>
+
+<form th:method="GET" th:action="@{/people/new}">
+    <input type="submit" value="Создать нового человека"/>
+</form>
 
 </body>
 </html>

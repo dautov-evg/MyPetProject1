@@ -13,7 +13,9 @@
 
 <br/>
 <hr/>
-<a href="/books/new">Создать новую книгу</a>
+<form th:method="GET" th:action="@{/books/new}">
+    <input type="submit" value="Создать новую книгу"/>
+</form>
 
 </body>
 </html>
