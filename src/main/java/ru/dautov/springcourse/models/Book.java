@@ -5,7 +5,7 @@ import javax.validation.constraints.NotEmpty;
 public class Book {
     private int id;
     @NotEmpty(message = "Название книги не может быть пустым")
-    private String name;
+    private String title;
     @NotEmpty(message = "Введите имя автора")
     private String author;
 
@@ -20,12 +20,12 @@ public class Book {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getAuthor() {
@@ -47,9 +47,9 @@ public class Book {
     public Book() {
     }
 
-    public Book(int id, String name, String author, int year) {
+    public Book(int id, String title, String author, int year) {
         this.id = id;
-        this.name = name;
+        this.title = title;
         this.author = author;
         this.year = year;
     }

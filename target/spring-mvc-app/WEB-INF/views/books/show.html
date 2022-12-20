@@ -6,21 +6,20 @@
 </head>
 <body>
 
-<p th:text="${book.getName() + ', ' + book.getAuthor() + ', ' + book.getYear()}">VALUE</p>
+<p th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getYear()}">VALUE</p>
 <p th:text="${book.getId()}">VALUE</p>
 
 <br/>
 
-<a th:href="@{/books/{id}/edit(id=${book.getId()})}">Редактировать</a>
-
-<br/>
-
+<form th:method="GET" th:action="@{/books/{id}/edit(id=${book.getId()})}">
+    <input type="submit" value="Редактировать">
+</form>
 <form th:method="DELETE" th:action="@{/books/{id}(id=${book.getId()})}">
     <input type="submit" value="Удалить">
 </form>
 
 
-<a href="/books">Все люди</a>
+<a href="/books">Все книги</a>
 
 </body>
 </html>

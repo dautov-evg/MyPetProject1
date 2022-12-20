@@ -9,16 +9,16 @@ public class Person {
     private int id;
 
     @NotEmpty(message = "ФИО должно быть заполнено")
-    private String name;
+    private String fullName;
     @Min(value = 1900, message = "Год рождения должен быть позже 1900")
-    private int age;
+    private int yearOfBirth;
 
 
 
-    public Person(int id, String name, int age) {
+    public Person(int id, String fullName, int yearOfBirth) {
         this.id = id;
-        this.name = name;
-        this.age = age;
+        this.fullName = fullName;
+        this.yearOfBirth = yearOfBirth;
     }
 
     public Person() {
@@ -33,19 +33,19 @@ public class Person {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public int getAge() {
-        return age;
+    public int getYearOfBirth() {
+        return yearOfBirth;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setYearOfBirth(int yearOfBirth) {
+        this.yearOfBirth = yearOfBirth;
     }
 }
