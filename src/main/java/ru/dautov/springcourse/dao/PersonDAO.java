@@ -9,6 +9,7 @@ import ru.dautov.springcourse.models.Person;
 
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Component
@@ -45,5 +46,10 @@ public class PersonDAO {
     public List<Book> getBooksByPersonId(int id) {
         return jdbcTemplate.query("SELECT * FROM Book WHERE person_id=?", new Object[] {id},
                 new BeanPropertyRowMapper<>(Book.class));
+    }
+
+    public Optional<Person> show(String fullName) {
+        return jdbcTemplate.query("SELECT * FROM Person WHERE full_name=?", new Object[] {fullName},
+                new BeanPropertyRowMapper<>(Person.class)).stream().findAny();
     }
 }
