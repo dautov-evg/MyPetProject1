@@ -1,12 +1,15 @@
 package ru.dautov.springcourse.models;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 public class Book {
     private int id;
     @NotEmpty(message = "Название книги не может быть пустым")
+    @Size(max = 100, message = "Название должно быть менее 100 символов")
     private String title;
-    @NotEmpty(message = "Введите имя автора")
+    @NotEmpty(message = "Поле Автор должно быть заполнено")
+    @Size(max = 100, message = "Автор должен быть менее 100 символов")
     private String author;
 
     private int year;

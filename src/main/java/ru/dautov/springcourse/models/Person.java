@@ -3,12 +3,14 @@ package ru.dautov.springcourse.models;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 
 public class Person {
     private int id;
 
     @NotEmpty(message = "ФИО должно быть заполнено")
+    @Size(min = 6, max = 100, message = "Поле ФИО должно быть от 6 до 100 символов")
     private String fullName;
     @Min(value = 1900, message = "Год рождения должен быть позже 1900")
     private int yearOfBirth;
